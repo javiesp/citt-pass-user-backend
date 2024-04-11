@@ -29,7 +29,7 @@ export declare class UsersService {
     private readonly userModel;
     constructor(userModel: Model<User>);
     createUser(createUserDto: CreateUserDto): Promise<User>;
-    findAllUsers(): Promise<User[]>;
+    findAllUsers(proyect_id: any): Promise<User[]>;
     findOneUser(id: string): Promise<User>;
     updateUser(id: string, updateUserDto: CreateUserDto): Promise<User>;
     removeUser(id: string): Promise<User>;

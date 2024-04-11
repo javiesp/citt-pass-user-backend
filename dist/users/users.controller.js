@@ -8,31 +8,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
-const create_user_dto_1 = require("./dto/create-user.dto");
-const update_user_dto_1 = require("./dto/update-user.dto");
+const microservices_1 = require("@nestjs/microservices");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
     createUser(createUserDto) {
+        console.log("pasa por aca");
         return this.usersService.createUser(createUserDto);
     }
-    findAll() {
-        const data = this.usersService.findAllUsers();
-        return data;
+    findAll(proyect_id) {
+        console.log(proyect_id);
+        const usersData = this.usersService.findAllUsers(proyect_id);
+        console.log("servicio ejecutando", proyect_id);
+        return usersData;
     }
     findOne(id) {
         return this.usersService.findOneUser(id);
     }
-    update(id, updateUserDto) {
-        return this.usersService.updateUser(id, updateUserDto);
+    updateUser(payload) {
+        console.log(payload);
+        return this.usersService.updateUser(payload.id, payload.updateUserDto);
     }
     remove(id) {
         return this.usersService.removeUser(id);
@@ -41,35 +41,35 @@ let UsersController = class UsersController {
 exports.UsersController = UsersController;
 __decorate([
     (0, common_1.Post)('/create-user'),
-    __param(0, (0, common_1.Body)()),
+    (0, microservices_1.MessagePattern)('createUser'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
 __decorate([
     (0, common_1.Get)('/find-all-users'),
+    (0, microservices_1.MessagePattern)("findAllUsers"),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('/find-one-user/:id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, microservices_1.MessagePattern)('findOneUser'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)('/update-user/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
+    (0, microservices_1.MessagePattern)('updateUser'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_user_dto_1.UpdateUserDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], UsersController.prototype, "update", null);
+], UsersController.prototype, "updateUser", null);
 __decorate([
     (0, common_1.Delete)('/delete-user/:id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, microservices_1.MessagePattern)('removeUser'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)

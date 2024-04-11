@@ -13,23 +13,16 @@ export class User {
   name: string;
 
   @Prop()
+  hashed_password: string;
+
+  @Prop()
   email: string;
 
   @Prop()
   phone: number;
 
-
   @Prop()
-  major: string;
-
-  @Prop()
-  current_semester: number;
-
-  @Prop()
-  user_role: string;
-
-  @Prop()
-  proyect_id_mongo: string;
+  proyect_id: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

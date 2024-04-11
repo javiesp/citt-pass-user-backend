@@ -25,6 +25,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], User.prototype, "hashed_password", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
@@ -32,20 +36,8 @@ __decorate([
 ], User.prototype, "phone", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "major", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
-], User.prototype, "current_semester", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "user_role", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "proyect_id_mongo", void 0);
+], User.prototype, "proyect_id", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

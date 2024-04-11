@@ -26,8 +26,8 @@ let UsersService = class UsersService {
         console.log(createUserDto);
         return createdUser;
     }
-    async findAllUsers() {
-        return await this.userModel.find().exec();
+    async findAllUsers(proyect_id) {
+        return await this.userModel.find({ 'proyect_id': proyect_id }).exec();
     }
     async findOneUser(id) {
         return await this.userModel.findById(id).exec();
