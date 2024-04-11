@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.TCP,    
     options: {
       port: 3001 // modificar puerto seg´pun los puerto ocupados 
     }
@@ -12,3 +12,4 @@ async function bootstrap() {
   await app.listen();
 }
 bootstrap();
+ 
