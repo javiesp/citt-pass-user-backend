@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.TCP,    
     options: {
-      port: 3001 // modificar puerto seg´pun los puerto ocupados 
+      port: 3006 // modificar puerto seg´pun los puerto ocupados 
     }
   });
   await app.listen();

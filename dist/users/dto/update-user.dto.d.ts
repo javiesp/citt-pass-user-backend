@@ -6,6 +6,7 @@ export declare class UpdateUserDto extends UpdateUserDto_base {
     phone: number;
     name: string;
     hashed_password: string;
+    run: string;
     proyect_id: number;
 }
 export {};

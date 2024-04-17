@@ -22,7 +22,6 @@ let UsersController = class UsersController {
         return this.usersService.createUser(createUserDto);
     }
     findAll(proyect_id) {
-        console.log(proyect_id);
         const usersData = this.usersService.findAllUsers(proyect_id);
         console.log("servicio ejecutando", proyect_id);
         return usersData;

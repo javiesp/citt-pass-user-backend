@@ -18,7 +18,6 @@ export class UsersController {
   @Get('/find-all-users')
   @MessagePattern("findAllUsers")// se comunica con la api por medio de message pattern
   findAll(proyect_id) { // recoge los parametro enviados 
-    console.log(proyect_id) // muestra los parametros 
     const usersData = this.usersService.findAllUsers(proyect_id);
     console.log("servicio ejecutando", proyect_id)
     return usersData;

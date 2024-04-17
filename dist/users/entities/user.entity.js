@@ -36,6 +36,10 @@ __decorate([
 ], User.prototype, "phone", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], User.prototype, "run", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], User.prototype, "proyect_id", void 0);
 exports.User = User = __decorate([

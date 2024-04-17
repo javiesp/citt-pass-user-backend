@@ -22,6 +22,10 @@ export class User {
   phone: number;
 
   @Prop()
+  run: string;
+
+
+  @Prop()
   proyect_id: number;
 }
 
