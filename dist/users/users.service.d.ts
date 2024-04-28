@@ -23,6 +23,8 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
 export declare class UsersService {
@@ -31,6 +33,7 @@ export declare class UsersService {
     createUser(createUserDto: CreateUserDto): Promise<User>;
     findAllUsers(proyect_id: any): Promise<User[]>;
     findOneUser(id: string): Promise<User>;
-    updateUser(id: string, updateUserDto: CreateUserDto): Promise<User>;
+    updateUser(id: string, updateUserDto: UpdateUserDto): Promise<User>;
+    updateUserPassword(id: string, updateUserPasswordDto: UpdateUserPasswordDto): Promise<User>;
     removeUser(id: string): Promise<User>;
 }

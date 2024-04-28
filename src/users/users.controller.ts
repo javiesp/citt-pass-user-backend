@@ -9,17 +9,18 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('/create-user')
-  @MessagePattern('createUser')
-  createUser(createUserDto) {
+  @MessagePattern('createUser') // micropserv
+  createUser(createUserDto) { // parametro
     console.log("pasa por aca")
     return this.usersService.createUser(createUserDto);
   }
 // funcion de ejemplo 
   @Get('/find-all-users')
   @MessagePattern("findAllUsers")// se comunica con la api por medio de message pattern
-  findAll(proyect_id) { // recoge los parametro enviados 
-    const usersData = this.usersService.findAllUsers(proyect_id);
-    console.log("servicio ejecutando", proyect_id)
+  findAll(query) { // recoge los parametro enviados 
+    const usersData = this.usersService.findAllUsers(query.project_id);
+    console.log("servicio ejecutando", query.project_id)
+    console.log('soy la query',query)
     return usersData;
   }
 
@@ -34,6 +35,13 @@ export class UsersController {
   updateUser(payload) { 
     console.log(payload) 
     return this.usersService.updateUser(payload.id, payload.updateUserDto);
+  }
+
+  @Patch('/update-user-password/:id')
+  @MessagePattern('updateUser')
+  updateUserPassword(payload) { 
+    console.log(payload) 
+    return this.usersService.updateUserPassword(payload.id, payload.updateUserDto);
   }
 
   @Delete('/delete-user/:id')

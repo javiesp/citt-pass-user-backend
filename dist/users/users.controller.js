@@ -21,9 +21,10 @@ let UsersController = class UsersController {
         console.log("pasa por aca");
         return this.usersService.createUser(createUserDto);
     }
-    findAll(proyect_id) {
-        const usersData = this.usersService.findAllUsers(proyect_id);
-        console.log("servicio ejecutando", proyect_id);
+    findAll(query) {
+        const usersData = this.usersService.findAllUsers(query.project_id);
+        console.log("servicio ejecutando", query.project_id);
+        console.log('soy la query', query);
         return usersData;
     }
     findOne(id) {
@@ -32,6 +33,10 @@ let UsersController = class UsersController {
     updateUser(payload) {
         console.log(payload);
         return this.usersService.updateUser(payload.id, payload.updateUserDto);
+    }
+    updateUserPassword(payload) {
+        console.log(payload);
+        return this.usersService.updateUserPassword(payload.id, payload.updateUserDto);
     }
     remove(id) {
         return this.usersService.removeUser(id);
@@ -66,6 +71,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "updateUser", null);
+__decorate([
+    (0, common_1.Patch)('/update-user-password/:id'),
+    (0, microservices_1.MessagePattern)('updateUser'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "updateUserPassword", null);
 __decorate([
     (0, common_1.Delete)('/delete-user/:id'),
     (0, microservices_1.MessagePattern)('removeUser'),

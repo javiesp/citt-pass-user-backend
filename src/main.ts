@@ -3,7 +3,7 @@ import { Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice(AppModule, {
+  const app = await NestFactory.createMicroservice(AppModule, { // micro servicio
     transport: Transport.TCP,    
     options: {
       port: 3006 // modificar puerto seg´pun los puerto ocupados 
