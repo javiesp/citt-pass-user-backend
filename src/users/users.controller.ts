@@ -16,7 +16,7 @@ export class UsersController {
   }
 // funcion de ejemplo 
   @Get('/find-all-users')
-  @MessagePattern("findAllUsers")// se comunica con la api por medio de message pattern
+  @MessagePattern("findAllUsers")// cam biar nombre 
   findAll(query) { // recoge los parametro enviados 
     const usersData = this.usersService.findAllUsers(query.project_id);
     console.log("servicio ejecutando", query.project_id)
@@ -38,7 +38,7 @@ export class UsersController {
   }
 
   @Patch('/update-user-password/:id')
-  @MessagePattern('updateUser')
+  @MessagePattern('updateUserPassword')
   updateUserPassword(payload) { 
     console.log(payload) 
     return this.usersService.updateUserPassword(payload.id, payload.updateUserDto);

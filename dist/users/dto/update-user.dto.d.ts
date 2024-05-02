@@ -7,6 +7,6 @@ export declare class UpdateUserDto extends UpdateUserDto_base {
     name: string;
     hashed_password: string;
     run: string;
-    proyect_id: number;
+    project_id: number;
 }
 export {};

@@ -8,5 +8,5 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     name: string;
     hashed_password: string
     run: string
-    proyect_id: number;
+    project_id: number;
 }
