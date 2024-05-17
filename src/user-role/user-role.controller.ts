@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { UserRoleService } from './user-role.service';
 import { CreateUserRoleDto } from './dto/create-user-role.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
@@ -26,7 +26,7 @@ export class UserRoleController {
     return this.userRoleService.findOneUserRole(id);
   }
 
-  @Patch('/update-user-role/:id')
+  @Put('/update-user-role/:id')
   @MessagePattern('updateUserRole')
   updateUserRole(payload) { 
     console.log(payload) 
