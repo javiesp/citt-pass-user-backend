@@ -73,7 +73,7 @@ __decorate([
 ], UsersController.prototype, "updateUser", null);
 __decorate([
     (0, common_1.Patch)('/update-user-password/:id'),
-    (0, microservices_1.MessagePattern)('updateUser'),
+    (0, microservices_1.MessagePattern)('updateUserPassword'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
