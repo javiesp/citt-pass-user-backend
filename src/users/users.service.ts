@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { HttpException, Injectable } from '@nestjs/common';
+import { CreateUserDto, LoginAuthDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,6 +9,24 @@ import { Model } from 'mongoose';
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {}
+
+  async userLogin(loginAuthDto: LoginAuthDto) {
+    const emailUser = loginAuthDto.email;
+    const passUser = loginAuthDto.hashed_password;
+
+    const findUser = await this.userModel.findOne({ email: emailUser });
+
+    if (!findUser) {
+      console.log('Usuario no encontrado');
+      throw new HttpException('USUARIO_NO_ENCONTRADO', 404);
+    }
+
+    if (findUser.hashed_password !== passUser) {
+      throw new HttpException('CONTRASEÑA_INCORRECTA', 403);
+    }
+
+    return true;
+  }
   
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const createdUser = new this.userModel(createUserDto).save();

@@ -21,6 +21,19 @@ let UsersService = class UsersService {
     constructor(userModel) {
         this.userModel = userModel;
     }
+    async userLogin(loginAuthDto) {
+        const emailUser = loginAuthDto.email;
+        const passUser = loginAuthDto.hashed_password;
+        const findUser = await this.userModel.findOne({ email: emailUser });
+        if (!findUser) {
+            console.log('Usuario no encontrado');
+            throw new common_1.HttpException('USUARIO_NO_ENCONTRADO', 404);
+        }
+        if (findUser.hashed_password !== passUser) {
+            throw new common_1.HttpException('CONTRASEÑA_INCORRECTA', 403);
+        }
+        return true;
+    }
     async createUser(createUserDto) {
         const createdUser = new this.userModel(createUserDto).save();
         console.log(createUserDto);

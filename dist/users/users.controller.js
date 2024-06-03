@@ -17,6 +17,9 @@ let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
+    loginUser(loginAuthDto) {
+        return this.usersService.userLogin(loginAuthDto);
+    }
     createUser(createUserDto) {
         console.log("pasa por aca");
         return this.usersService.createUser(createUserDto);
@@ -43,6 +46,13 @@ let UsersController = class UsersController {
     }
 };
 exports.UsersController = UsersController;
+__decorate([
+    (0, common_1.Post)('/login'),
+    (0, microservices_1.MessagePattern)('loginUser'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "loginUser", null);
 __decorate([
     (0, common_1.Post)('/create-user'),
     (0, microservices_1.MessagePattern)('createUser'),

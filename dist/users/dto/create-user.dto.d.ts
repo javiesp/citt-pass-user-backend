@@ -7,3 +7,7 @@ export declare class CreateUserDto {
     run: string;
     proyect_id: number;
 }
+export declare class LoginAuthDto {
+    email: string;
+    hashed_password: string;
+}

@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, LoginAuthDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { User } from './entities/user.entity';
@@ -30,6 +30,7 @@ import { Model } from 'mongoose';
 export declare class UsersService {
     private readonly userModel;
     constructor(userModel: Model<User>);
+    userLogin(loginAuthDto: LoginAuthDto): Promise<boolean>;
     createUser(createUserDto: CreateUserDto): Promise<User>;
     findAllUsers(proyect_id: any): Promise<User[]>;
     findOneUser(id: string): Promise<User>;

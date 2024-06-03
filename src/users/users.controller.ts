@@ -8,6 +8,12 @@ import { MessagePattern } from '@nestjs/microservices';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Post('/login')
+  @MessagePattern('loginUser')
+  loginUser(loginAuthDto) { 
+    return this.usersService.userLogin(loginAuthDto);
+  }
+
   @Post('/create-user')
   @MessagePattern('createUser') // micropserv
   createUser(createUserDto) { // parametro

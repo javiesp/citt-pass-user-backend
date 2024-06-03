@@ -2,6 +2,7 @@ import { UsersService } from './users.service';
 export declare class UsersController {
     private readonly usersService;
     constructor(usersService: UsersService);
+    loginUser(loginAuthDto: any): Promise<boolean>;
     createUser(createUserDto: any): Promise<import("src/users/entities/user.entity").User>;
     findAll(query: any): Promise<import("src/users/entities/user.entity").User[]>;
     findOne(id: string): Promise<import("src/users/entities/user.entity").User>;
