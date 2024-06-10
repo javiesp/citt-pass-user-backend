@@ -11,6 +11,7 @@ export class UsersController {
   @Post('/login')
   @MessagePattern('loginUser')
   loginUser(loginAuthDto) { 
+    console.log('wtf',loginAuthDto)
     return this.usersService.userLogin(loginAuthDto);
   }
 

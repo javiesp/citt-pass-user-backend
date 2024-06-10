@@ -5,6 +5,7 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Injectable()
 export class UsersService {
@@ -24,7 +25,6 @@ export class UsersService {
     if (findUser.hashed_password !== passUser) {
       throw new HttpException('CONTRASEÑA_INCORRECTA', 403);
     } 
-
     return true;
   }
   

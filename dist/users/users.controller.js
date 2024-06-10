@@ -18,6 +18,7 @@ let UsersController = class UsersController {
         this.usersService = usersService;
     }
     loginUser(loginAuthDto) {
+        console.log('wtf', loginAuthDto);
         return this.usersService.userLogin(loginAuthDto);
     }
     createUser(createUserDto) {
