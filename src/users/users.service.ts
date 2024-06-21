@@ -38,6 +38,10 @@ export class UsersService {
     return await this.userModel.find({ 'proyect_id': proyect_id }).exec();
   }
 
+  async findAll(): Promise<User[]> {
+    return await this.userModel.find().exec();
+  }
+
   async findOneUser(id: string): Promise<User> {
     return await this.userModel.findById(id).exec();
   }

@@ -42,6 +42,9 @@ let UsersService = class UsersService {
     async findAllUsers(proyect_id) {
         return await this.userModel.find({ 'proyect_id': proyect_id }).exec();
     }
+    async findAll() {
+        return await this.userModel.find().exec();
+    }
     async findOneUser(id) {
         return await this.userModel.findById(id).exec();
     }

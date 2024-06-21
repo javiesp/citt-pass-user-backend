@@ -33,6 +33,7 @@ export declare class UsersService {
     userLogin(loginAuthDto: LoginAuthDto): Promise<boolean>;
     createUser(createUserDto: CreateUserDto): Promise<User>;
     findAllUsers(proyect_id: any): Promise<User[]>;
+    findAll(): Promise<User[]>;
     findOneUser(id: string): Promise<User>;
     updateUser(id: string, updateUserDto: UpdateUserDto): Promise<User>;
     updateUserPassword(id: string, updateUserPasswordDto: UpdateUserPasswordDto): Promise<User>;

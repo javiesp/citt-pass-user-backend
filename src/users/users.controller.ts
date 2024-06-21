@@ -22,12 +22,19 @@ export class UsersController {
     return this.usersService.createUser(createUserDto);
   }
 // funcion de ejemplo 
-  @Get('/find-all-users')
+  @Get("/find-users-by-project")
   @MessagePattern("findAllUsers")// cam biar nombre 
-  findAll(query) { // recoge los parametro enviados 
+  findAllUsers(query) { // recoge los parametro enviados 
     const usersData = this.usersService.findAllUsers(query.project_id);
     console.log("servicio ejecutando", query.project_id)
     console.log('soy la query',query)
+    return usersData;
+  }
+
+  @Get('/find-all-users')
+  @MessagePattern("findAll")// cam biar nombre 
+  findAll() { // recoge los parametro enviados 
+    const usersData = this.usersService.findAll();
     return usersData;
   }
 

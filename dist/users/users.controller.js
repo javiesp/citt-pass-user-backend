@@ -25,10 +25,14 @@ let UsersController = class UsersController {
         console.log("pasa por aca");
         return this.usersService.createUser(createUserDto);
     }
-    findAll(query) {
+    findAllUsers(query) {
         const usersData = this.usersService.findAllUsers(query.project_id);
         console.log("servicio ejecutando", query.project_id);
         console.log('soy la query', query);
+        return usersData;
+    }
+    findAll() {
+        const usersData = this.usersService.findAll();
         return usersData;
     }
     findOne(id) {
@@ -62,10 +66,17 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Get)('/find-all-users'),
+    (0, common_1.Get)("/find-users-by-project"),
     (0, microservices_1.MessagePattern)("findAllUsers"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "findAllUsers", null);
+__decorate([
+    (0, common_1.Get)('/find-all-users'),
+    (0, microservices_1.MessagePattern)("findAll"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "findAll", null);
 __decorate([
